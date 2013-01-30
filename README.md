@@ -5,7 +5,7 @@ A wrapper for the [Backbone.Validation](https://github.com/thedersen/backbone.va
 ## Version
 The version of this gem follows that of the associated Backbone.Validation version
 
-Currently: **0.6.2**
+Currently: **0.7.1**
 
 ## Installation
 
