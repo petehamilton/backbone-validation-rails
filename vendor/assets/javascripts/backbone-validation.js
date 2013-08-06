@@ -1,6 +1,6 @@
-// Backbone.Validation v0.7.1
+// Backbone.Validation v0.8.0
 //
-// Copyright (c) 2011-2012 Thomas Pedersen
+// Copyright (c) 2011-2013 Thomas Pedersen
 // Distributed under MIT License
 //
 // Documentation and full license available at:
@@ -64,7 +64,12 @@ Backbone.Validation = (function(_){
 
     _.each(obj, function(val, key) {
       if(obj.hasOwnProperty(key)) {
-        if (val && typeof val === 'object' && !(val instanceof Date || val instanceof RegExp)) {
+        if (val && typeof val === 'object' && !(
+          val instanceof Date ||
+          val instanceof RegExp ||
+          val instanceof Backbone.Model ||
+          val instanceof Backbone.Collection)
+        ) {
           flatten(val, into, prefix + key + '.');
         }
         else {
@@ -283,7 +288,7 @@ Backbone.Validation = (function(_){
     return {
 
       // Current version of the library
-      version: '0.7.1',
+      version: '0.8.0',
 
       // Called to configure the default options
       configure: function(options) {
