@@ -1,4 +1,4 @@
-// Backbone.Validation v0.8.0
+// Backbone.Validation v0.8.1
 //
 // Copyright (c) 2011-2013 Thomas Pedersen
 // Distributed under MIT License
@@ -65,6 +65,7 @@ Backbone.Validation = (function(_){
     _.each(obj, function(val, key) {
       if(obj.hasOwnProperty(key)) {
         if (val && typeof val === 'object' && !(
+          val instanceof Array ||
           val instanceof Date ||
           val instanceof RegExp ||
           val instanceof Backbone.Model ||
@@ -288,7 +289,7 @@ Backbone.Validation = (function(_){
     return {
 
       // Current version of the library
-      version: '0.8.0',
+      version: '0.8.1',
 
       // Called to configure the default options
       configure: function(options) {
@@ -430,7 +431,7 @@ Backbone.Validation = (function(_){
     sentenceCase: function(attrName) {
       return attrName.replace(/(?:^\w|[A-Z]|\b\w)/g, function(match, index) {
         return index === 0 ? match.toUpperCase() : ' ' + match.toLowerCase();
-      }).replace('_', ' ');
+      }).replace(/_/g, ' ');
     },
 
     // Looks for a label configured on the model and returns it
@@ -473,9 +474,9 @@ Backbone.Validation = (function(_){
       return _.isNumber(value) || (_.isString(value) && value.match(defaultPatterns.number));
     };
 
-    // Determines whether or not not a value is empty
+    // Determines whether or not a value is empty
     var hasValue = function(value) {
-      return !(_.isNull(value) || _.isUndefined(value) || (_.isString(value) && trim(value) === ''));
+      return !(_.isNull(value) || _.isUndefined(value) || (_.isString(value) && trim(value) === '') || (_.isArray(value) && _.isEmpty(value)));
     };
 
     return {
