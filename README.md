@@ -5,13 +5,17 @@ A wrapper for the [Backbone.Validation](https://github.com/thedersen/backbone.va
 ## Version
 The version of this gem follows that of the associated Backbone.Validation version
 
-Currently: **v0.8.0**
+Currently: **v0.9.1**
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'backbone-validation-rails'
+    gem 'backbone-validation-rails', git: 'git://github.com/zakusha/backbone-validation-rails.git'
+
+Add this line to your application.js menifest:
+
+    //= require backbone-validation
 
 And then execute:
 
